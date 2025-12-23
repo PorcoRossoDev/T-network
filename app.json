@@ -1,0 +1,67 @@
+{
+  "expo": {
+    "name": "Scenthomes",
+    "slug": "app-scenthomes",
+    "version": "1.1.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "notification": {
+      "color": "#ED1723",
+      "androidMode": "default",
+      "androidCollapsedTitle": "scenthomes"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Ứng dụng cần sử dụng Face ID để đăng nhập an toàn.",
+        "NSPhotoLibraryUsageDescription": "Ứng dụng cần quyền truy cập vào thư viện ảnh để bạn có thể chọn và tải lên ảnh sản phẩm bất động sản, ảnh hồ sơ cá nhân, hoặc các tài liệu liên quan đến giao dịch. Ảnh sẽ chỉ được sử dụng để hiển thị trong ứng dụng và không được chia sẻ với bên thứ ba.",
+        "NSPhotoLibraryAddUsageDescription": "Ứng dụng cần quyền để lưu ảnh vào thư viện ảnh của bạn, bao gồm ảnh chụp từ camera, ảnh đã chỉnh sửa, hoặc ảnh đã tải xuống từ ứng dụng để bạn có thể xem lại sau này."
+      },
+      "bundleIdentifier": "com.tamphat.scenthomes",
+      "buildNumber": "11"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": false,
+      "softwareKeyboardLayoutMode": "pan",
+      "permissions": [
+        "READ_EXTERNAL_STORAGE",
+        "android.permission.USE_BIOMETRIC",
+        "android.permission.USE_FINGERPRINT"
+      ],
+      "package": "com.tamphat.scenthomes",
+      "versionCode": 7
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "249f108f-1bc0-48ee-8624-d84507d10d6e"
+      }
+    },
+    "owner": "thuongtv90",
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "color": "#ED1723",
+          "defaultChannel": "default"
+        }
+      ],
+      "expo-local-authentication",
+      "expo-font",
+      "expo-asset"
+    ]
+  }
+}

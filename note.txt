@@ -1,0 +1,13 @@
+npx expo prebuild
+npx eas build -p ios --profile preview --clear-cache
+MÔi trường production
+npx eas build -p ios --profile production --clear-cache
+eas submit -p ios --latest
+
+Môi trường dev
+eas build -p android --profile preview --clear-cache
+eas build -p ios --profile preview --clear-cache
+
+//check trước android
+./gradlew assembleRelease --stacktrace | cat
+node scripts/test-ios-pods.js
