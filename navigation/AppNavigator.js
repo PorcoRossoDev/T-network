@@ -83,26 +83,16 @@ const AppNavigator = () => {
         currentRoute !== 'ReportOverviewStack' && (
           <SafeAreaView
             edges={['top']}
-            style={{
-              backgroundColor: topColor,
-            }}
           />
         )
       }
       
 
-      <StatusBar
+      {/* <StatusBar
         translucent={false}
         backgroundColor={topColor}
         barStyle={isHome ? "light-content" : "dark-content"}
-      />
-
-      {/* <StatusBar
-        translucent
-        backgroundColor="transparent"
-        barStyle="light-content"   // hoặc 'dark-content'
       /> */}
-
       
       <SafeAreaView 
         edges={['left','right','bottom']}

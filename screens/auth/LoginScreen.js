@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext, useCallback, useRef } from "react";
 import {
   View,
   Text,
@@ -18,6 +18,7 @@ import {
   EyeSlashIcon,
   LockClosedIcon,
 } from "react-native-heroicons/outline";
+import BottomSheetForgotID from "../../components/auth/BottomSheetForgotID";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as LocalAuthentication from "expo-local-authentication";
 import { AuthContext } from "../../context/AuthContext";
@@ -50,6 +51,15 @@ export default function LoginScreen() {
   const faceIdEnabled = useSelector((state) => state.user.faceIdEnabled);
   const [biometricAvailable, setBiometricAvailable] = useState(false);
   const [autoFaceIdTriggered, setAutoFaceIdTriggered] = useState(false);
+
+  /*=== START: Modal - Lấy mã pin ===*/
+  const bottomSheetRef = useRef(null);
+  const openSheet = useCallback(() => {
+    bottomSheetRef.current?.present();
+  }, []);
+  const closeSheet = useCallback(() => {
+    bottomSheetRef.current?.dismiss();
+  }, []);
 
   // Check biometric support (iOS only)
   useEffect(() => {
@@ -331,7 +341,7 @@ export default function LoginScreen() {
               )
             }
           </View>
-          <TouchableOpacity className="mt-4">
+          <TouchableOpacity onPress={openSheet} className="mt-4">
               <Text className="text-center font-bold text-blue-600">Quên ID đăng nhập?</Text>
           </TouchableOpacity>
         </View>
@@ -342,6 +352,11 @@ export default function LoginScreen() {
           <Text className="text-white text-center font-bold text-f17">Đăng nhập</Text>
         </TouchableOpacity>
       </View>
+
+      <BottomSheetForgotID
+        ref={bottomSheetRef}
+        onClose={closeSheet}
+      />
     </SafeAreaView>
   );
 }

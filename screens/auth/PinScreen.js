@@ -374,7 +374,7 @@ export default function PinScreen() {
       </View>
 
       <View className="px-4">
-        <TouchableOpacity disabled={disableButton} className={`${disableButton?'bg-gray-300':'bg-primary'}  rounded-[40px] h-16 justify-center items-center`}>
+        <TouchableOpacity onPress={handleGuestLogin} disabled={disableButton} className={`${disableButton?'bg-gray-300':'bg-primary'}  rounded-[40px] h-16 justify-center items-center`}>
           <Text className="text-white text-center font-bold text-f17">Xác nhận mã PIN</Text>
         </TouchableOpacity>
       </View>
