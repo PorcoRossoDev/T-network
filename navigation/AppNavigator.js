@@ -14,7 +14,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 
-export default function AppNavigator() {
+const AppNavigator = () => {
   const { isAuthenticated, loading } = useContext(AuthContext);
   const navigationRef = useRef(); // Tham chiếu đến navigation container
 
@@ -122,7 +122,7 @@ export default function AppNavigator() {
                 // Người dùng chưa xác thực - hiển thị login screens
                 <>
                   <Stack.Screen name="Login" component={LoginScreen} />
-                  <Stack.Screen name="PinScreen" component={PinScreen} />
+                  <Stack.Screen name="Pin" component={PinScreen} />
                   <Stack.Screen name="Register" component={RegisterScreen} />
                   <Stack.Screen
                     name="ForgotPassword"
@@ -137,3 +137,5 @@ export default function AppNavigator() {
     
   );
 }
+
+export default AppNavigator;

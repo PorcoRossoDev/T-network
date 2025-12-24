@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext, useCallback, useRef } from "react";
 import {
   View,
   Text,
@@ -8,7 +8,14 @@ import {
   Platform,
   Alert,
   StatusBar,
+  StyleSheet,
 } from "react-native";
+import {
+  CodeField,
+  Cursor,
+  useBlurOnFulfill,
+  useClearByFocusCell,
+} from 'react-native-confirmation-code-field';
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -22,6 +29,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as LocalAuthentication from "expo-local-authentication";
 import { AuthContext } from "../../context/AuthContext";
 import { enableFaceId, disableFaceId } from "../../redux/slices/userSlice";
+import BottomSheetForgotPIN from "../../components/auth/BottomSheetForgotPIN";
 import { useDispatch, useSelector } from "react-redux";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -30,6 +38,34 @@ import Fontisto from '@expo/vector-icons/Fontisto';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function PinScreen() {
+
+  /*=== START: Modal - Lấy mã pin ===*/
+  const bottomSheetRef = useRef(null);
+  const openSheet = useCallback(() => {
+    bottomSheetRef.current?.present();
+  }, []);
+  const closeSheet = useCallback(() => {
+    bottomSheetRef.current?.dismiss();
+  }, []);
+
+  // Mã PIN
+  const CELL_COUNT = 6;
+  const [pin, setPin] = useState('');
+  const ref = useBlurOnFulfill({ value: pin, cellCount: CELL_COUNT });
+  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+    value: pin,
+    setValue: setPin,
+  });
+
+  const [disableButton, setDisableButton] = useState(true);
+  const onComplete = (code) => {
+    if (code.length === CELL_COUNT) {
+      setDisableButton(false);
+    } else {
+      setDisableButton(true);
+    }
+  };
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const insets = useSafeAreaInsets();
@@ -307,19 +343,46 @@ export default function PinScreen() {
 
         <View className="px-4 mt-8 relative">
           <View className="">
-            
+            <CodeField
+              ref={ref}
+              {...props}
+              value={pin}
+              onChangeText={text => {
+                setPin(text);
+                if (text.length === CELL_COUNT) {
+                  onComplete?.(text);
+                }
+              }}
+              cellCount={CELL_COUNT}
+              keyboardType="number-pad"
+              secureTextEntry
+              renderCell={({ index, symbol, isFocused }) => (
+                <Text
+                  key={index}
+                  className={`bg-gray-200 w-[55px] h-[65px] leading-[65px] rounded-xl text-center text-f18 overflow-hidden ${isFocused ? 'border-primary border' : 'border-transparent'}`}
+                  onLayout={getCellOnLayoutHandler(index)}
+                >
+                  {symbol ? '•' : isFocused ? <Cursor /> : null}
+                </Text>
+              )}
+            />
           </View>
-          <TouchableOpacity className="mt-4">
+          <TouchableOpacity onPress={openSheet} className="mt-4">
               <Text className="text-center font-bold text-blue-600">Quên mã PIN?</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View className="px-4">
-        <TouchableOpacity className="bg-primary rounded-[40px] h-16 justify-center items-center">
+        <TouchableOpacity disabled={disableButton} className={`${disableButton?'bg-gray-300':'bg-primary'}  rounded-[40px] h-16 justify-center items-center`}>
           <Text className="text-white text-center font-bold text-f17">Xác nhận mã PIN</Text>
         </TouchableOpacity>
       </View>
+
+      <BottomSheetForgotPIN
+        ref={bottomSheetRef}
+        onClose={closeSheet}
+      />
     </SafeAreaView>
   );
 }

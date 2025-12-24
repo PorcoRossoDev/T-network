@@ -338,7 +338,7 @@ export default function LoginScreen() {
       </View>
 
       <View className="px-4">
-        <TouchableOpacity onPress={navigation.navigate("PinScreen")} className="bg-primary rounded-[40px] h-16 justify-center items-center">
+        <TouchableOpacity onPress={() => navigation.navigate("Pin")} className="bg-primary rounded-[40px] h-16 justify-center items-center">
           <Text className="text-white text-center font-bold text-f17">Đăng nhập</Text>
         </TouchableOpacity>
       </View>
