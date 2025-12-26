@@ -111,6 +111,7 @@ const AppNavigation = () => {
         headerShown: false,
         // tabBarShowLabel: false,
         tabBarStyle: {
+          display: 'none',
           height: 60,
           // borderTopWidth: 1,
           // backgroundColor: 'white',

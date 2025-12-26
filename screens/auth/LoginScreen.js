@@ -297,7 +297,7 @@ export default function LoginScreen() {
 
   return (
     <SafeAreaView className="flex-1 justify-between bg-white">
-      <View className="bg-white mt-10">
+      <View className="bg-white">
         <View className="px-4 flex-row justify-between items-center">
           <TouchableOpacity className="w-12 h-12 justify-center items-center bg-gray-100 rounded-full">
               <Fontisto name="angle-left" size={18} color="black" />

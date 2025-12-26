@@ -56,7 +56,7 @@ const BottomSheetForgotID = forwardRef((props, ref) => {
 
               <View className="bg-gray-100 py-3 px-3 rounded-xl flex-row items-center">
                 <View className="bg-white w-11 h-11 justify-center items-center rounded-xl mr-4">
-=                  <FontAwesome name="google" size={24} color="red" />
+                  <FontAwesome name="google" size={24} color="red" />
                 </View>
                 <Text>Xác minh qua Gmail</Text>
               </View>

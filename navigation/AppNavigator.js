@@ -78,51 +78,37 @@ const AppNavigator = () => {
   return (
     <>
       {/* --- SAFE AREA TOP (luôn tồn tại) --- */}
-      
-      {
-        currentRoute !== 'ReportOverviewStack' && (
-          <SafeAreaView
-            edges={['top']}
-          />
-        )
-      }
-      
-
-      {/* <StatusBar
-        translucent={false}
-        backgroundColor={topColor}
-        barStyle={isHome ? "light-content" : "dark-content"}
-      /> */}
-      
-      <SafeAreaView 
-        edges={['left','right','bottom']}
-        style={{ flex: 1, backgroundColor: '#fff' }}>
-          <NavigationContainer ref={navigationRef} 
-            onStateChange={(state) => {
-              const routeName = getActiveRouteName(state);
-              setCurrentRoute(routeName);
-            }} 
-            onReady={onNavigationReady}
-            >
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              {isAuthenticated ? (
-                // Người dùng đã xác thực - hiển thị main stack
-                <Stack.Screen name="MainStack" component={StackNavigator} />
-              ) : (
-                // Người dùng chưa xác thực - hiển thị login screens
-                <>
-                  <Stack.Screen name="Login" component={LoginScreen} />
-                  <Stack.Screen name="Pin" component={PinScreen} />
-                  <Stack.Screen name="Register" component={RegisterScreen} />
-                  <Stack.Screen
-                    name="ForgotPassword"
-                    component={ForgotPasswordScreen}
-                  />
-                </>
-              )}
-            </Stack.Navigator>
-          </NavigationContainer>
-        </SafeAreaView>
+      <SafeAreaProvider>
+          <SafeAreaView 
+          edges={['top', 'bottom']}
+          style={{ flex: 1, backgroundColor: '#fff' }}>
+            <NavigationContainer ref={navigationRef} 
+              onStateChange={(state) => {
+                const routeName = getActiveRouteName(state);
+                setCurrentRoute(routeName);
+              }} 
+              onReady={onNavigationReady}
+              >
+              <Stack.Navigator screenOptions={{ headerShown: false }}>
+                {isAuthenticated ? (
+                  // Người dùng đã xác thực - hiển thị main stack
+                  <Stack.Screen name="MainStack" component={StackNavigator} />
+                ) : (
+                  // Người dùng chưa xác thực - hiển thị login screens
+                  <>
+                    <Stack.Screen name="Login" component={LoginScreen} />
+                    <Stack.Screen name="Pin" component={PinScreen} />
+                    <Stack.Screen name="Register" component={RegisterScreen} />
+                    <Stack.Screen
+                      name="ForgotPassword"
+                      component={ForgotPasswordScreen}
+                    />
+                  </>
+                )}
+              </Stack.Navigator>
+            </NavigationContainer>
+          </SafeAreaView>
+      </SafeAreaProvider>
       </>
     
   );
