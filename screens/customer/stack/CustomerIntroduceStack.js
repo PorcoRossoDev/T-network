@@ -9,8 +9,14 @@ import EvilIcons from '@expo/vector-icons/EvilIcons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Fontisto from '@expo/vector-icons/Fontisto';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { BlurView } from 'expo-blur' // or 'react-native-blur' for React Native projects
+import BottomSheetLearnMore from '../../../components/auth/BottomSheetLearnMore'
+import { LinearGradient } from 'expo-linear-gradient';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { BlurView } from 'expo-blur';
+import { HeavyFakeBlurText } from "../../../components/common/HeavyFakeBlurText";
+
 
 import {
   Dimensions,
@@ -56,7 +62,7 @@ const Introduce = () => {
     { id: '3', title: 'Mở khoá thường Human Hush', icon: 'gift' },
   ]
   return (
-    <View className="mt-2">
+    <View className="mt-2 px-4">
       <Text className="font-semibold text-f20">Mời bạn bè và tăng sức mạnh Human Hash của bạn</Text>
       <Image source={banner} className="w-full h-44 rounded-xl mt-4" resizeMode="cover" />
       <Text className="text-center mt-5 text-gray-600 font-medium">Cách giới thiệu và nhận phần thưởng?</Text>
@@ -87,7 +93,13 @@ const Introduce = () => {
         <View className="flex-row justify-between items-center">
           <View className="flex-row justify-between items-center h-12 bg-white flex-1 rounded-lg py-3 px-3 border border-gray-200">
             <Text className="text-left text-gray-700 font-medium flex-1">Mã giới thiệu</Text>
-            <Text className="text-right text-gray-700 font-medium w-[60%]">ITLG123456</Text>
+            <View className="relative w-[60%]">
+              <View className="relative items-end">
+                <HeavyFakeBlurText>
+                  ITLG123456
+                </HeavyFakeBlurText>
+              </View>
+            </View>
           </View>
           <View className="justify-center items-center bg-white rounded-lg h-12 w-12 ml-2  border border-gray-200">
             <TouchableOpacity>
@@ -100,20 +112,9 @@ const Introduce = () => {
             <Text className="text-left text-gray-700 font-medium flex-1">Liên Kết giới thiệu</Text>
             <View className="relative w-[60%]">
               <View className="relative items-end">
-                <BlurView
-                  intensity={40}
-                  tint="xlight"
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '100%'
-                  }}/>
-                <Text className="text-right text-gray-700 font-medium">ITLG123456</Text>
+                <HeavyFakeBlurText>
+                  ITLG123456
+                </HeavyFakeBlurText>
               </View>
             </View>
           </View>
@@ -139,14 +140,161 @@ const Introduce = () => {
 }
 
 // Tab 2: Human Hash
-const HumanHash = () => {
+const HumanHash = ({bottomSheetRef, openSheet}) => {
+  const tabs = ['Giới thiệu trực tiếp', 'Giới thiệu gián tiếp']
+  const [active, setActive] = useState(0)
   return (
-    <View>
-      <View className="flex-row justify-between mt-2">
-        <Text>Introduce</Text>
-        <TouchableOpacity>
+    <View className="px-4">
+      <View className="flex-row justify-between mt-2 items-center">
+        
+        <View className="flex-row items-center">
+          <Text className="text-f16">
+            Human Has của bạn
+          </Text>
+
+          <View className="ml-1 translate-y-[1px]">
+            <MaterialCommunityIcons
+              name="information-variant-circle-outline"
+              size={17}
+              color="black"
+            />
+          </View>
+        </View>
+
+        <TouchableOpacity onPress={openSheet}>
           <Text className="font-semibold text-primary">Tìm hiểu thêm</Text>
         </TouchableOpacity>
+      </View>
+
+      {/* Xác minh */}
+      <View className="flex-row mt-5 bg-orange-100 p-4 border border-orange-300 rounded-lg">
+        <View className="w-6 h-6 bg-yellow-400 justify-center items-center rounded-full">
+          <Fontisto name="locked" size={15} color="white" />
+        </View>
+        <View className="w-[65%] px-3">
+          <Text className="font-semibold text-f16">Bạn chưa xác minh</Text>
+          <Text className="text-gray-500 mt-1">Xác minh ngay để nhận Sức Mạnh Human Hash</Text>
+        </View>
+        <View className="w-[30%]">
+          <TouchableOpacity className="bg-black rounded-md">
+            <Text className="text-white text-center py-2 font-medium">Xác minh ngay</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/*  */}
+      <View className="mt-5">
+        <LinearGradient
+          colors={['#EAF6FF', '#F1EEFF']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={{
+            borderRadius: 16,
+          }}
+        >
+          <View className="p-4">
+            <View className="flex-row justify-between mb-1">
+              <Text className="text-f14 font-semibold">Tổng Sức Mạnh Human Hash (HHP)</Text>
+              <Text className="text-f14 font-semibold">1.0</Text>
+            </View>
+            <View className="flex-row justify-between mb-1">
+              <Text className="text-f13 text-gray-500">HHP Hoạt động</Text>
+              <Text className="text-f13 text-gray-500">1.0</Text>
+            </View>
+            <View className="flex-row justify-between mb-1">
+              <Text className="text-f13 text-gray-500">Husman Has cơ bản</Text>
+              <Text className="text-f13 text-gray-500">1.0</Text>
+            </View>
+            <View className="flex-row justify-between mb-1">
+              <Text className="text-f13 text-gray-500">Giới thiệu trực tiếp</Text>
+              <Text className="text-f13 text-gray-500">+1.0</Text>
+            </View>
+            <View className="flex-row justify-between mb-1">
+              <Text className="text-f13 text-gray-500">Giới thiệu gián tiêp</Text>
+              <Text className="text-f13 text-gray-500">+1.0</Text>
+            </View>
+          </View>
+        </LinearGradient>
+      </View>
+
+      {/* Gửi mã */}
+      <View className="mt-5">
+        <Text className="text-f15">Gửi Mã giới thiệu</Text>
+        <View className="mt-3 bg-[#f0db99] rounded-xl p-4">
+          <View className="bg-white rounded-3xl relative flex-row py-3">
+            <View className="absolute left-2 top-1/2 translate-y-[-50%]">
+              <MaterialCommunityIcons name="link-variant" size={20} color="#6b7280" />  
+            </View>
+            <TextInput
+              className="px-8"
+              placeholder="Nhập mã giới thiệu"
+              />
+            <View className="absolute right-3 top-1/2">
+              <Text className="text-f12">+0.5HHP</Text>
+            </View>
+          </View>
+          <Text className="mt-2 text-gray-500">Nhập mã giới thiệu để nhận 0.5 thêm mã Husman Hash</Text>
+        </View>
+      </View>
+
+      {/* Lịch sử */}
+      <View className="mt-5">
+        <Text className="text-f15">Lịch sử</Text>
+        <View className="mt-3 bg-gray-200 rounded-xl p-3">
+          <View className="flex-row bg-gray-300 p-1 rounded-lg">
+            {tabs.map((item, index) => {
+              const isActive = active === index
+              return (
+                <TouchableOpacity
+                  key={item}
+                  onPress={() => setActive(index)}
+                  className={`flex-1 py-3 rounded-lg ${
+                    isActive ? 'bg-white shadow' : ''
+                  }`}
+                >
+                  <Text
+                    className={`text-center font-semibold ${
+                      isActive ? 'text-black' : 'text-gray-700'
+                    }`}
+                  >
+                    {item}
+                  </Text>
+                </TouchableOpacity>
+              )
+            })}
+          </View>
+          <View>
+            {active === 0 ? <HisToryTabDirect /> : <HisToryTabInDirect />}
+          </View>
+        </View>
+      </View>
+    </View>
+  )
+}
+
+// Tab trực tiếp
+const HisToryTabDirect = () => {
+  return (
+    <View className="p-2 justify-center items-center h-[100px]">
+      <View className="">
+        <View className="justify-center items-center">
+          <MaterialCommunityIcons name="file-document-multiple-outline" size={24} color="#9ca3af" />
+        </View>
+        <Text className="mt-2 text-gray-400">Không có dữ liệu</Text>
+      </View>
+    </View>
+  )
+}
+
+// Tab gián tiếp
+const HisToryTabInDirect = () => {
+  return (
+    <View className="p-2 justify-center items-center h-[100px]">
+      <View className="">
+        <View className="justify-center items-center">
+          <MaterialCommunityIcons name="file-document-multiple-outline" size={24} color="#9ca3af" />
+        </View>
+        <Text className="mt-2 text-gray-400">Không có dữ liệu</Text>
       </View>
     </View>
   )
@@ -157,34 +305,45 @@ const CustomerIntroduceStack = () => {
   const tabs = ['Giới thiệu', 'Human Hash']
   const [active, setActive] = useState(0)
 
+  /*=== START: Modal - Lấy mã pin ===*/
+  const bottomSheetRef = useRef(null);
+  const openSheet = useCallback(() => {
+    bottomSheetRef.current?.present();
+  }, []);
+  const closeSheet = useCallback(() => {
+    bottomSheetRef.current?.dismiss();
+  }, []);
+
   return (
     <View className="flex-1 bg-gray-5 relative">
       <HeaderBar />
-      <View className="relative z-50 mt-3 bg-white py-4 rounded-t-3xl px-4 flex-1">
-        <View className="flex-row bg-gray-200 rounded-3xl mb-4">
-          {tabs.map((item, index) => {
-            const isActive = active === index
-            return (
-              <TouchableOpacity
-                key={item}
-                onPress={() => setActive(index)}
-                className={`flex-1 py-4 rounded-3xl ${
-                  isActive ? 'bg-black shadow' : ''
-                }`}
-              >
-                <Text
-                  className={`text-center font-semibold ${
-                    isActive ? 'text-white' : 'text-gray-500'
+      <View className="relative z-50 mt-3 bg-white py-4 rounded-t-3xl flex-1">
+        <View className="px-4">
+          <View className="flex-row bg-gray-200 rounded-3xl mb-4">
+            {tabs.map((item, index) => {
+              const isActive = active === index
+              return (
+                <TouchableOpacity
+                  key={item}
+                  onPress={() => setActive(index)}
+                  className={`flex-1 py-4 rounded-3xl ${
+                    isActive ? 'bg-black shadow' : ''
                   }`}
                 >
-                  {item}
-                </Text>
-              </TouchableOpacity>
-            )
-          })}
+                  <Text
+                    className={`text-center font-semibold ${
+                      isActive ? 'text-white' : 'text-gray-500'
+                    }`}
+                  >
+                    {item}
+                  </Text>
+                </TouchableOpacity>
+              )
+            })}
+          </View>
         </View>
         <ScrollView className="flex-1">
-          {active === 0 ? <Introduce /> : <HumanHash />}
+          {active === 0 ? <Introduce /> : <HumanHash bottomSheetRef={bottomSheetRef} openSheet={openSheet} />}
         </ScrollView>
         <View>
           <TouchableOpacity onPress={() => navigation.goBack()} className="mt-5 bg-primary py-4 rounded-3xl">
@@ -192,8 +351,11 @@ const CustomerIntroduceStack = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <BottomSheetLearnMore
+        ref={bottomSheetRef}
+        onClose={closeSheet}
+      />
     </View>
   );
 };
-
 export default CustomerIntroduceStack;

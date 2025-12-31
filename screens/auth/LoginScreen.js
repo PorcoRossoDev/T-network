@@ -296,7 +296,7 @@ export default function LoginScreen() {
   }
 
   return (
-    <SafeAreaView className="flex-1 justify-between bg-white">
+    <View className="flex-1 justify-between bg-white">
       <View className="bg-white">
         <View className="px-4 flex-row justify-between items-center">
           <TouchableOpacity className="w-12 h-12 justify-center items-center bg-gray-100 rounded-full">
@@ -312,7 +312,7 @@ export default function LoginScreen() {
 
         <View className="px-4">
           <Text className="text-center text-3xl font-medium mt-8">Đăng nhập</Text>
-          <Text className="text-center text-gray-500 mt-3 text-f15">Đăng nhập bằng khuôn mặt của bạn - Chìa khoá chính là mật khẩu của bạn. CHỉ cần quét và bắt đầu.</Text>
+          <Text className="text-center text-gray-500 mt-3 text-f15">Đăng nhập bằng khuôn mặt của bạn - Chìa khoá chính là mật khẩu của bạn. Chỉ cần quét và bắt đầu.</Text>
         </View>
 
         <View className="px-4 mt-8 relative">
@@ -357,6 +357,6 @@ export default function LoginScreen() {
         ref={bottomSheetRef}
         onClose={closeSheet}
       />
-    </SafeAreaView>
+    </View>
   );
 }

@@ -322,7 +322,7 @@ export default function PinScreen() {
   }
 
   return (
-    <SafeAreaView className="flex-1 justify-between bg-white">
+    <View className="flex-1 justify-between bg-white">
       <View className="bg-white">
         <View className="px-4 flex-row justify-between items-center">
           <TouchableOpacity onPress={navigation.goBack} className="w-12 h-12 justify-center items-center bg-gray-100 rounded-full">
@@ -383,6 +383,6 @@ export default function PinScreen() {
         ref={bottomSheetRef}
         onClose={closeSheet}
       />
-    </SafeAreaView>
+    </View>
   );
 }
