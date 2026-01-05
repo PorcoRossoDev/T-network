@@ -229,7 +229,7 @@ const HumanHash = ({bottomSheetRef, openSheet}) => {
               className="px-8"
               placeholder="Nhập mã giới thiệu"
               />
-            <View className="absolute right-3 top-1/2">
+            <View className="absolute right-3 top-[12px]">
               <Text className="text-f12">+0.5HHP</Text>
             </View>
           </View>
@@ -240,8 +240,8 @@ const HumanHash = ({bottomSheetRef, openSheet}) => {
       {/* Lịch sử */}
       <View className="mt-5">
         <Text className="text-f15">Lịch sử</Text>
-        <View className="mt-3 bg-gray-200 rounded-xl p-3">
-          <View className="flex-row bg-gray-300 p-1 rounded-lg">
+        <View className="mt-3 bg-gray-100 rounded-xl p-3">
+          <View className="flex-row bg-gray-200 p-1 rounded-lg">
             {tabs.map((item, index) => {
               const isActive = active === index
               return (
@@ -345,7 +345,7 @@ const CustomerIntroduceStack = () => {
         <ScrollView className="flex-1">
           {active === 0 ? <Introduce /> : <HumanHash bottomSheetRef={bottomSheetRef} openSheet={openSheet} />}
         </ScrollView>
-        <View>
+        <View className="px-4">
           <TouchableOpacity onPress={() => navigation.goBack()} className="mt-5 bg-primary py-4 rounded-3xl">
             <Text className="text-center text-white font-bold text-f16">Khai tác $ITLG của bạn</Text>
           </TouchableOpacity>

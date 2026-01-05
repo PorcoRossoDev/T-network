@@ -187,9 +187,7 @@ const CustomerOverviewStack = () => {
   const navigation = useNavigation();
   const customerNavigation = [
     { id: '1', title: 'Hồ sơ cá nhân', icon: 'account-circle-outline', screen: 'CustomerProfile' },
-    { id: '2', title: 'Địa chỉ giao hàng', icon: 'map-marker-outline', screen: 'CustomerAddress' },
-    { id: '3', title: 'Lịch sử mua hàng', icon: 'history', screen: 'CustomerHistory' },
-    { id: '4', title: 'Cài đặt thông báo', icon: 'bell-outline', screen: 'CustomerNotifications' },
+    { id: '2', title: 'Cài đặt thông báo', icon: 'bell-outline', screen: 'CustomerNotifications' },
   ]
 
   return (
