@@ -43,7 +43,7 @@ const HeaderBar = () => {
         
         <View className="relative w-[60%]">
           <TouchableOpacity>
-            <Text className="font-bold text-f19 text-center">Hồ sơ cá nhân</Text>
+            <Text className="font-sgbold text-f19 text-center">Hồ sơ cá nhân</Text>
           </TouchableOpacity>
         </View>
 
@@ -64,16 +64,16 @@ const Avatar = () => {
       <View className="justify-center items-center mt-4">
         <TouchableOpacity className="relative w-32 h-32 justify-center items-center rounded-full bg-gray-200 p-4 border border-gray-300">
           <FontAwesome name="user-o" size={60} color="#6b7280" />
-          <View className="absolute top-[10%] right-[-10%] bg-gray-200 w-8 h-8 rounded-full justify-center items-center border-[3px] border-white">
+          <View className="absolute top-2 -right-3 bg-gray-200 w-8 h-8 rounded-full justify-center items-center border-[3px] border-white">
             <MaterialCommunityIcons name="file-image-plus-outline" size={18} color="black" />
           </View>
         </TouchableOpacity>
       </View>
 
       <View className="justify-center items-center mt-4">
-        <Text className="font-medium text-f20">
+        <Text className="font-sgmedium text-f20">
           Dev@20251001 
-          <TouchableOpacity className="w-6 h-6 justify-center items-center bg-gray-200 rounded-full ml-2 translate-x-2 translate-y-[5px]">
+          <TouchableOpacity onPress={() => navigation.navigate('CustomerEdit')} className="w-6 h-6 justify-center items-center bg-gray-200 rounded-full ml-2 translate-x-2 translate-y-[5px]">
             <EvilIcons name="pencil" size={24} color="black" />
           </TouchableOpacity>
         </Text>
@@ -86,19 +86,19 @@ const Avatar = () => {
               <Image source={ImageFaceID} className="w-8 h-8 mb-2 relative top-2 right-1" resizeMode="contain" />
             </View>
             <View>
-              <Text className="font-medium text-f15">Chưa xác minh</Text>
-              <Text className="text-gray-500 mt-1">Nhấn để xác minh</Text>
+              <Text className="font-sgmedium text-f15">Chưa xác minh</Text>
+              <Text className="text-gray-500 mt-1 font-sgregular">Nhấn để xác minh</Text>
             </View>
           </TouchableOpacity>
         </View>
         <View className="w-1/2 px-2">
-          <TouchableOpacity onPress={() => navigation.navigate('CustomerIntroduceStack')} className="bg-gray-100 rounded-xl p-4 min-h-[140px] justify-end">
+          <TouchableOpacity onPress={() => navigation.navigate('CustomerIntroduce')} className="bg-gray-100 rounded-xl p-4 min-h-[140px] justify-end">
             <View className="justify-center items-center w-24 h-24 bg-white rounded-full absolute -top-4 -right-4">
               <Ionicons name="gift-outline" size={30} color="black" className="w-8 h-8 mb-2 relative top-2 right-1" />
             </View>
             <View>
-              <Text className="font-medium text-f15">Giới thiệu</Text>
-              <Text className="text-gray-500 mt-1">Mời bạn bè để nhận phần thưởng</Text>
+              <Text className="font-sgmedium text-f15">Giới thiệu</Text>
+              <Text className="text-gray-500 mt-1 font-sgregular">Mời bạn bè để nhận phần thưởng</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -108,36 +108,37 @@ const Avatar = () => {
 }
 
 const CustomerInfor = ({ customerNavigation }) => {
+  const navigation = useNavigation();
   return (
     <View className="px-4 mt-9">
       <View>
-        <Text className="text-f16">Tiện ích mở rộng</Text>
+        <Text className="text-f16 font-sgbold">Tiện ích mở rộng</Text>
         <TouchableOpacity className="mt-5 flex-row justify-between items-center">
           <View className="w-12 h-12 bg-black justify-center items-center rounded-xl">
             <MaterialCommunityIcons name="hand-coin" size={24} color="white" />
           </View>
           <View className="w-[70%] pl-3">
-            <Text className="text-left font-medium text-f16">Thanh toán QR</Text>
-            <Text className="text-f14 text-gray-500 mt-1.5">Chạm để thanh toán</Text>
+            <Text className="text-left font-sgmedium text-f16">Thanh toán QR</Text>
+            <Text className="text-f14 text-gray-500 mt-1.5 font-sgregular">Chạm để thanh toán</Text>
           </View>
           <View className="flex-1">
             <View className="items-end">
-              <Text className="bg-gray-200 px-3 py-2 text-center align-baseline rounded-xl">Mở</Text>
+              <Text className="bg-gray-200 px-3 py-2 text-center align-baseline rounded-xl font-sgregular">Mở</Text>
             </View>
           </View>
         </TouchableOpacity>
       </View>
 
       <View className="mt-6">
-        <Text className="text-f16">Hồ sơ cá nhân</Text>
+        <Text className="text-f16 font-sgbold">Hồ sơ cá nhân</Text>
         <View className="mt-5">
           {customerNavigation.map((item) => (
-            <TouchableOpacity key={item.id} className="mb-2 flex-row justify-between items-center bg-gray-100 rounded-xl py-4 px-3">
+            <TouchableOpacity onPress={() => navigation.navigate(item.name, {screen: item.screen})}  key={item.id} className="mb-2 flex-row justify-between items-center bg-gray-100 rounded-xl py-4 px-3">
               <View className="w-9 h-9 bg-black justify-center items-center rounded-full">
                 <MaterialCommunityIcons name={item.icon} size={20} color="white" />
               </View>
               <View className="w-[70%] pl-3">
-                <Text className="text-left text-f16">{item.title}</Text>
+                <Text className="text-left text-f16 font-sgregular">{item.title}</Text>
               </View>
               <View className="flex-1">
                 <View className="items-end">
@@ -151,7 +152,7 @@ const CustomerInfor = ({ customerNavigation }) => {
                 <AntDesign name="logout" size={24} color="#dc2626" />
               </View>
               <View className="w-[70%] pl-3">
-                <Text className="text-left text-f16 text-red-600">Đăng xuất</Text>
+                <Text className="text-left text-f16 text-red-600 font-sgregular">Đăng xuất</Text>
               </View>
               <View className="flex-1">
                 <View className="items-end">
@@ -181,13 +182,14 @@ const Socials = () => {
   )
 }
 
-const CustomerOverviewStack = () => {
+const CustomerOverviewScreen = () => {
   const { width } = Dimensions.get("window");
   const sideSpacing = 16;
   const navigation = useNavigation();
   const customerNavigation = [
-    { id: '1', title: 'Hồ sơ cá nhân', icon: 'account-circle-outline', screen: 'CustomerProfile' },
-    { id: '2', title: 'Cài đặt thông báo', icon: 'bell-outline', screen: 'CustomerNotifications' },
+    { id: '1', title: 'Hồ sơ cá nhân', icon: 'account-circle-outline', screen: 'CustomerProfile', name: 'Customer' },
+    { id: '2', title: 'Cài đặt thông báo', icon: 'bell-outline', screen: 'CustomerNotifications', name: 'Customer' },
+    { id: '3', title: 'Đăng nhập Admin', icon: 'account-circle-outline', screen: 'Login', name: 'User' },
   ]
 
   return (
@@ -202,4 +204,4 @@ const CustomerOverviewStack = () => {
   );
 };
 
-export default CustomerOverviewStack;
+export default CustomerOverviewScreen;

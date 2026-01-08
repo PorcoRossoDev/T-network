@@ -18,11 +18,11 @@ import {
   EyeSlashIcon,
   LockClosedIcon,
 } from "react-native-heroicons/outline";
-import BottomSheetForgotID from "../../components/auth/BottomSheetForgotID";
+import BottomSheetForgotID from "../../../components/auth/BottomSheetForgotID";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as LocalAuthentication from "expo-local-authentication";
-import { AuthContext } from "../../context/AuthContext";
-import { enableFaceId, disableFaceId } from "../../redux/slices/userSlice";
+import { AuthContext } from "../../../context/AuthContext";
+import { enableFaceId, disableFaceId } from "../../../redux/slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -30,11 +30,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Fontisto from '@expo/vector-icons/Fontisto';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-export default function LoginScreen() {
+const CustomerLoginScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const insets = useSafeAreaInsets();
-  const logo = require("../../assets/images/logo.webp");
+  const logo = require("../../../assets/images/logo.webp");
   // Focus states
   const [focus, setFocus] = useState({});
   const handleFocus = (name) => setFocus((prev) => ({ ...prev, [name]: true }));
@@ -296,7 +296,7 @@ export default function LoginScreen() {
   }
 
   return (
-    <View className="flex-1 justify-between bg-white">
+    <View className="flex-1 justify-between bg-white pt-5">
       <View className="bg-white">
         <View className="px-4 flex-row justify-between items-center">
           <TouchableOpacity className="w-12 h-12 justify-center items-center bg-gray-100 rounded-full">
@@ -311,8 +311,8 @@ export default function LoginScreen() {
         </View>
 
         <View className="px-4">
-          <Text className="text-center text-3xl font-medium mt-8">Đăng nhập</Text>
-          <Text className="text-center text-gray-500 mt-3 text-f15">Đăng nhập bằng khuôn mặt của bạn - Chìa khoá chính là mật khẩu của bạn. Chỉ cần quét và bắt đầu.</Text>
+          <Text className="text-center text-2xl font-sgbold mt-8">Đăng nhập</Text>
+          <Text className="text-center text-gray-500 mt-3 text-f15 font-sgregular leading-5">Đăng nhập bằng khuôn mặt của bạn - Chìa khoá chính là mật khẩu của bạn. Chỉ cần quét và bắt đầu.</Text>
         </View>
 
         <View className="px-4 mt-8 relative">
@@ -322,13 +322,13 @@ export default function LoginScreen() {
             </View>
             <View className="w-[1px] h-[55%] bg-gray-300 mx-2"></View>
             <View className="">
-              <Text className="text-gray-400">Nhập ID của Bạn</Text>
+              <Text className="text-gray-400 font-sgregular mb-1">Nhập ID của Bạn</Text>
               <TextInput
                 value={username}
                 onChangeText={setUsername}
                 onFocus={() => handleFocus("username")}
                 onBlur={() => handleBlur("username")}
-                className=""
+                className="font-sgregular text-f15"
                 placeholder=""
                 placeholderTextColor="#9ca3af"
                   />
@@ -342,14 +342,14 @@ export default function LoginScreen() {
             }
           </View>
           <TouchableOpacity onPress={openSheet} className="mt-4">
-              <Text className="text-center font-bold text-blue-600">Quên ID đăng nhập?</Text>
+              <Text className="text-center font-sgbold text-blue-600">Quên ID đăng nhập?</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View className="px-4">
         <TouchableOpacity onPress={() => navigation.navigate("Pin")} className="bg-primary rounded-[40px] h-16 justify-center items-center">
-          <Text className="text-white text-center font-bold text-f17">Đăng nhập</Text>
+          <Text className="text-white text-center font-sgbold text-f17">Đăng nhập</Text>
         </TouchableOpacity>
       </View>
 
@@ -360,3 +360,5 @@ export default function LoginScreen() {
     </View>
   );
 }
+
+export default CustomerLoginScreen;

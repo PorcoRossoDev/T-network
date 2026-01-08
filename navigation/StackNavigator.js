@@ -2,6 +2,12 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabNavigator from "./TabNavigator";
+// import {
+//   CustomerStack,
+//   HomeScreen,
+//   UserStack,
+// } from "../stack"
+
 
 const Stack = createNativeStackNavigator();
 

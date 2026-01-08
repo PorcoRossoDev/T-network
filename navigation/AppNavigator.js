@@ -4,13 +4,14 @@ import { NavigationContainer, useNavigationContainerRef } from '@react-navigatio
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { AuthContext } from "../context/AuthContext";
 import StackNavigator from "./StackNavigator";
-import LoginScreen from "../screens/auth/LoginScreen";
-import PinScreen from "../screens/auth/PinScreen";
-import RegisterScreen from "../screens/auth/RegisterScreen";
-import ForgotPasswordScreen from "../screens/auth/ForgotPasswordScreen";
+import RegisterScreen from "../stack/auth/RegisterScreen";
+import ForgotPasswordScreen from "../stack/auth/ForgotPasswordScreen";
 import notificationServiceWrapper from "../services/notificationServiceWrapper";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-
+import {
+  CustomerPinScreen,
+  CustomerLoginScreen
+} from '../stack/customer/screen'
 
 const Stack = createNativeStackNavigator();
 
@@ -54,7 +55,6 @@ const AppNavigator = () => {
     if (route.state) {
       return getActiveRouteName(route.state);
     }
-    console.log(currentRoute)
     return route.name;
   };
 
@@ -86,7 +86,7 @@ const AppNavigator = () => {
               onStateChange={(state) => {
                 const routeName = getActiveRouteName(state);
                 setCurrentRoute(routeName);
-              }} 
+              }}
               onReady={onNavigationReady}
               >
               <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -96,8 +96,8 @@ const AppNavigator = () => {
                 ) : (
                   // Người dùng chưa xác thực - hiển thị login screens
                   <>
-                    <Stack.Screen name="Login" component={LoginScreen} />
-                    <Stack.Screen name="Pin" component={PinScreen} />
+                    <Stack.Screen name="Login" component={CustomerLoginScreen} />
+                    <Stack.Screen name="Pin" component={CustomerPinScreen} />
                     <Stack.Screen name="Register" component={RegisterScreen} />
                     <Stack.Screen
                       name="ForgotPassword"

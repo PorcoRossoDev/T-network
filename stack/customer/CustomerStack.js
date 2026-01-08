@@ -2,12 +2,11 @@ import { useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text, TouchableOpacity, View } from 'react-native';
 import * as HeroOutline from "react-native-heroicons/outline";
-import { CustomerOverviewStack, CustomerIntroduceStack } from './stack';
+import { CustomerOverviewScreen, CustomerIntroduceScreen, CustomerEditScreen } from './screen';
 
 const Stack = createNativeStackNavigator();
 
-const Customer = () => {
-  const navigation = useNavigation();
+const CustomerStack = () => {
   return (
     <Stack.Navigator
     screenOptions={{
@@ -15,15 +14,22 @@ const Customer = () => {
     }}
     >
       <Stack.Screen
-        name="CustomerOverviewStack"
-        component={CustomerOverviewStack}
+        name="CustomerOverview"
+        component={CustomerOverviewScreen}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="CustomerIntroduceStack"
-        component={CustomerIntroduceStack}
+        name="CustomerIntroduce"
+        component={CustomerIntroduceScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CustomerEdit"
+        component={CustomerEditScreen}
         options={{
           headerShown: false,
         }}
@@ -32,4 +38,4 @@ const Customer = () => {
   );
 };
 
-export default Customer;
+export default CustomerStack;

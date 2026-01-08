@@ -16,6 +16,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { BlurView } from 'expo-blur';
 import { HeavyFakeBlurText } from "../../../components/common/HeavyFakeBlurText";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 
 import {
@@ -39,14 +40,14 @@ const HeaderBar = () => {
         
         <View className="relative w-[60%]">
           <TouchableOpacity>
-            <Text className="font-bold text-f19 text-center">Giới thiệu</Text>
+            <Text className="font-sgbold text-f19 text-center">Giới thiệu</Text>
           </TouchableOpacity>
         </View>
 
         <View className="flex-1 items-end">
           <TouchableOpacity onPress={() => navigation.navigate('Customer')} className="relative px-3 flex-row py-2 justify-center items-center bg-gray-100 rounded-full">
             <MaterialCommunityIcons name="history" size={24} color="black" />
-            <Text className="ml-1">Lịch sử</Text>
+            <Text className="ml-1 font-sgregular">Lịch sử</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -63,9 +64,9 @@ const Introduce = () => {
   ]
   return (
     <View className="mt-2 px-4">
-      <Text className="font-semibold text-f20">Mời bạn bè và tăng sức mạnh Human Hash của bạn</Text>
+      <Text className="font-sgmedium text-f18">Mời bạn bè và tăng sức mạnh Human Hash của bạn</Text>
       <Image source={banner} className="w-full h-44 rounded-xl mt-4" resizeMode="cover" />
-      <Text className="text-center mt-5 text-gray-600 font-medium">Cách giới thiệu và nhận phần thưởng?</Text>
+      <Text className="text-center mt-5 text-gray-600 font-sgregular text-f15">Cách giới thiệu và nhận phần thưởng?</Text>
     
       <View className="flex-row mt-2">
         {steps.map((item, index) => {
@@ -75,11 +76,11 @@ const Introduce = () => {
                 <View className="w-10 h-10 bg-gray-200 justify-center items-center rounded-full">
                   <Ionicons name={item.icon} size={20} color="#6864f0" />
                 </View>
-                <View className="w-[70%] mt-4 relative justify-center items-center">
-                  <Text className="text-f13 text-center w-[80%]">{item.title}</Text>
+                <View className="w-2/3 mt-4 relative justify-center items-center">
+                  <Text className="text-f14 text-center w-[80%] font-sgregular">{item.title}</Text>
                   {
                     index < steps.length - 1 && (
-                      <View className="w-[30%] h-[1px] bg-gray-300 absolute top-1 -right-[35%]" />
+                      <View className="absolute top-0 -right-8 w-8 h-[1] bg-gray-300" />
                     )
                   }
                 </View>
@@ -92,7 +93,7 @@ const Introduce = () => {
       <View className="bg-gray-100 mt-8 rounded-xl px-3 py-3">
         <View className="flex-row justify-between items-center">
           <View className="flex-row justify-between items-center h-12 bg-white flex-1 rounded-lg py-3 px-3 border border-gray-200">
-            <Text className="text-left text-gray-700 font-medium flex-1">Mã giới thiệu</Text>
+            <Text className="text-left text-gray-700 font-sgmedium flex-1">Mã giới thiệu</Text>
             <View className="relative w-[60%]">
               <View className="relative items-end">
                 <HeavyFakeBlurText>
@@ -143,12 +144,25 @@ const Introduce = () => {
 const HumanHash = ({bottomSheetRef, openSheet}) => {
   const tabs = ['Giới thiệu trực tiếp', 'Giới thiệu gián tiếp']
   const [active, setActive] = useState(0)
+  const IndirectList = [
+    { id: 1, name: 'User_1@00121', time: '10:11 06/03/2025', islock: false, plus: '+0.1 HHP' },
+    { id: 2, name: 'User_2@00122', time: '10:12 06/03/2025', islock: true, plus: '' },
+    { id: 3, name: 'User_3@00123', time: '10:13 06/03/2025', islock: false, plus: '+0.1 HHP' },
+    { id: 4, name: 'User_4@00124', time: '10:14 06/03/2025', islock: true, plus: '' },
+    { id: 5, name: 'User_5@00125', time: '10:15 06/03/2025', islock: false, plus: '+0.1 HHP' },
+    { id: 6, name: 'User_6@00126', time: '10:16 06/03/2025', islock: true, plus: '' },
+    { id: 7, name: 'User_7@00127', time: '10:17 06/03/2025', islock: false, plus: '+0.1 HHP' },
+    { id: 8, name: 'User_8@00128', time: '10:18 06/03/2025', islock: true, plus: '' },
+    { id: 9, name: 'User_9@00129', time: '10:19 06/03/2025', islock: false, plus: '+0.1 HHP' },
+    { id: 10, name: 'User_10@001210', time: '10:20 06/03/2025', islock: true, plus: '' }
+  ];
+
   return (
     <View className="px-4">
       <View className="flex-row justify-between mt-2 items-center">
         
         <View className="flex-row items-center">
-          <Text className="text-f16">
+          <Text className="text-f16 font-sgregular">
             Human Has của bạn
           </Text>
 
@@ -162,7 +176,7 @@ const HumanHash = ({bottomSheetRef, openSheet}) => {
         </View>
 
         <TouchableOpacity onPress={openSheet}>
-          <Text className="font-semibold text-primary">Tìm hiểu thêm</Text>
+          <Text className="font-sgbold text-f15 text-primary">Tìm hiểu thêm</Text>
         </TouchableOpacity>
       </View>
 
@@ -172,12 +186,12 @@ const HumanHash = ({bottomSheetRef, openSheet}) => {
           <Fontisto name="locked" size={15} color="white" />
         </View>
         <View className="w-[65%] px-3">
-          <Text className="font-semibold text-f16">Bạn chưa xác minh</Text>
-          <Text className="text-gray-500 mt-1">Xác minh ngay để nhận Sức Mạnh Human Hash</Text>
+          <Text className="font-sgbold text-f16">Bạn chưa xác minh</Text>
+          <Text className="text-gray-500 mt-1 font-sgregular leading-4">Xác minh ngay để nhận Sức Mạnh Human Hash</Text>
         </View>
         <View className="w-[30%]">
           <TouchableOpacity className="bg-black rounded-md">
-            <Text className="text-white text-center py-2 font-medium">Xác minh ngay</Text>
+            <Text className="text-white text-center py-2 font-sgbold">Xác minh ngay</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -194,24 +208,24 @@ const HumanHash = ({bottomSheetRef, openSheet}) => {
         >
           <View className="p-4">
             <View className="flex-row justify-between mb-1">
-              <Text className="text-f14 font-semibold">Tổng Sức Mạnh Human Hash (HHP)</Text>
-              <Text className="text-f14 font-semibold">1.0</Text>
+              <Text className="text-f16 font-sgbold">Tổng Sức Mạnh Human Hash (HHP)</Text>
+              <Text className="text-f15 font-sgbold">1.0</Text>
+            </View>
+            <View className="flex-row justify-between mb-1 mt-1">
+              <Text className="text-f15 text-gray-500 font-sgregular">HHP Hoạt động</Text>
+              <Text className="text-f15 text-gray-500 font-sgbold">1.0</Text>
             </View>
             <View className="flex-row justify-between mb-1">
-              <Text className="text-f13 text-gray-500">HHP Hoạt động</Text>
-              <Text className="text-f13 text-gray-500">1.0</Text>
+              <Text className="text-f15 text-gray-500 font-sgregular">Husman Has cơ bản</Text>
+              <Text className="text-f15 text-gray-500 font-sgbold">1.0</Text>
             </View>
             <View className="flex-row justify-between mb-1">
-              <Text className="text-f13 text-gray-500">Husman Has cơ bản</Text>
-              <Text className="text-f13 text-gray-500">1.0</Text>
+              <Text className="text-f15 text-gray-500 font-sgregular">Giới thiệu trực tiếp</Text>
+              <Text className="text-f15 text-gray-500 font-sgbold">+1.0</Text>
             </View>
             <View className="flex-row justify-between mb-1">
-              <Text className="text-f13 text-gray-500">Giới thiệu trực tiếp</Text>
-              <Text className="text-f13 text-gray-500">+1.0</Text>
-            </View>
-            <View className="flex-row justify-between mb-1">
-              <Text className="text-f13 text-gray-500">Giới thiệu gián tiêp</Text>
-              <Text className="text-f13 text-gray-500">+1.0</Text>
+              <Text className="text-f15 text-gray-500 font-sgregular">Giới thiệu gián tiêp</Text>
+              <Text className="text-f15 text-gray-500 font-sgbold">+1.0</Text>
             </View>
           </View>
         </LinearGradient>
@@ -219,27 +233,29 @@ const HumanHash = ({bottomSheetRef, openSheet}) => {
 
       {/* Gửi mã */}
       <View className="mt-5">
-        <Text className="text-f15">Gửi Mã giới thiệu</Text>
-        <View className="mt-3 bg-[#f0db99] rounded-xl p-4">
+        <Text className="text-f15 font-sgmedium">Gửi Mã giới thiệu</Text>
+        <View className="mt-3 bg-[#f0db99]_ bg-yellow-200 rounded-xl p-4">
           <View className="bg-white rounded-3xl relative flex-row py-3">
             <View className="absolute left-2 top-1/2 translate-y-[-50%]">
               <MaterialCommunityIcons name="link-variant" size={20} color="#6b7280" />  
             </View>
             <TextInput
-              className="px-8"
+              className="px-8 font-sgregular h-6"
               placeholder="Nhập mã giới thiệu"
               />
-            <View className="absolute right-3 top-[12px]">
-              <Text className="text-f12">+0.5HHP</Text>
+            <View className="absolute right-3 h-12 justify-center items-center top-0"
+            
+            >
+              <Text className="text-f12 font-sgregular">+0.5HHP</Text>
             </View>
           </View>
-          <Text className="mt-2 text-gray-500">Nhập mã giới thiệu để nhận 0.5 thêm mã Husman Hash</Text>
+          <Text className="mt-2 font-sgregular">Nhập mã giới thiệu để nhận 0.5 thêm mã Husman Hash</Text>
         </View>
       </View>
 
       {/* Lịch sử */}
       <View className="mt-5">
-        <Text className="text-f15">Lịch sử</Text>
+        <Text className="text-f15 font-sgmedium">Lịch sử</Text>
         <View className="mt-3 bg-gray-100 rounded-xl p-3">
           <View className="flex-row bg-gray-200 p-1 rounded-lg">
             {tabs.map((item, index) => {
@@ -253,7 +269,7 @@ const HumanHash = ({bottomSheetRef, openSheet}) => {
                   }`}
                 >
                   <Text
-                    className={`text-center font-semibold ${
+                    className={`text-center font-sgmedium text-f15 ${
                       isActive ? 'text-black' : 'text-gray-700'
                     }`}
                   >
@@ -264,7 +280,7 @@ const HumanHash = ({bottomSheetRef, openSheet}) => {
             })}
           </View>
           <View>
-            {active === 0 ? <HisToryTabDirect /> : <HisToryTabInDirect />}
+            {active === 0 ? <HisToryTabDirect /> : <HisToryTabInDirect data={IndirectList} />}
           </View>
         </View>
       </View>
@@ -280,27 +296,107 @@ const HisToryTabDirect = () => {
         <View className="justify-center items-center">
           <MaterialCommunityIcons name="file-document-multiple-outline" size={24} color="#9ca3af" />
         </View>
-        <Text className="mt-2 text-gray-400">Không có dữ liệu</Text>
+        <Text className="mt-2 text-gray-400 font-sgregular">Không có dữ liệu</Text>
       </View>
     </View>
   )
 }
 
 // Tab gián tiếp
-const HisToryTabInDirect = () => {
+const HisToryTabInDirect = ({data}) => {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    { label: 'Mới nhất', value: 'new' },
+    { label: 'Cũ nhất', value: 'old' },
+    { label: 'A-Z', value: 'az' },
+  ]);
   return (
-    <View className="p-2 justify-center items-center h-[100px]">
-      <View className="">
-        <View className="justify-center items-center">
-          <MaterialCommunityIcons name="file-document-multiple-outline" size={24} color="#9ca3af" />
+    <View className="">
+      {data.length === 0 ? (
+        <View className="p-2 justify-center items-center h-[100px]">
+          <MaterialCommunityIcons
+            name="file-document-multiple-outline"
+            size={24}
+            color="#9ca3af"
+          />
+          <Text className="mt-2 text-gray-400">Không có dữ liệu</Text>
         </View>
-        <Text className="mt-2 text-gray-400">Không có dữ liệu</Text>
+      ) : (
+        // Nếu có dữ liệu, render gì đó ở đây
+        <View className="p-2 mt-4">
+          <View className="flex-row justify-between">
+            <Text className="text-f15 font-sgmedium">Giới thiệu gián tiếp (20)</Text>
+            <View style={{ width: '30%' }}>
+              <DropDownPicker
+                open={open}
+                value={value}
+                items={items}
+                setOpen={setOpen}
+                setValue={setValue}
+                setItems={setItems}
+                placeholder="Mới nhất"
+                // style={{
+                //   height: 48,
+                // }}
+                textStyle={{
+                  fontSize: 14,
+                  lineHeight: 18,
+                  flexShrink: 1,
+                }}
+                placeholderStyle={{
+                  color: '#999',
+                }}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              />
+            </View>
+          </View>
+          <View className="mt-4">
+            <FlatList
+              data={data}
+              scrollEnabled={false}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => <ItemIndirect item={item} />}
+            />
+          </View>
+        </View>
+      )}
+    </View>
+  );
+}
+
+// Render Item danh sách các user được giới thiệu
+const ItemIndirect = ({item}) => {
+  return (
+    <View className="flex-row items-center justify-between mb-5">
+      <View>
+        <View className="flex-row items-center">
+          <View className="relative -mt-0.5 mr-1">
+            <FontAwesome name="user-o" size={16} color="#6b7280" />
+          </View>
+          <Text className="font-sgmedium text-f15 pl-0.5">{item.name}</Text>
+        </View>
+        <Text className="mt-1 font-sgregular text-gray-500 text-f13">{item.time}</Text>
+      </View>
+      <View>
+        {
+          item.islock == true ? (
+            <View className="bg-orange-100 p-2 rounded-xl flex-row items-center justify-center">
+              <View className="relative -top-0.5"><Feather name="lock" size={15} color="#c2410c" /></View>
+              <Text className=" text-orange-700 font-sgmedium ml-1">Bị khoá</Text>
+            </View>
+          )
+          :(
+            <Text className="bg-blue-100 text-blue-700 font-sgmedium p-2 rounded-xl">{item.plus}</Text>
+          )
+        }
       </View>
     </View>
   )
 }
 
-const CustomerIntroduceStack = () => {
+const CustomerIntroduceScreen = () => {
   const navigation = useNavigation();
   const tabs = ['Giới thiệu', 'Human Hash']
   const [active, setActive] = useState(0)
@@ -331,7 +427,7 @@ const CustomerIntroduceStack = () => {
                   }`}
                 >
                   <Text
-                    className={`text-center font-semibold ${
+                    className={`text-center font-sgmedium text-f16 ${
                       isActive ? 'text-white' : 'text-gray-500'
                     }`}
                   >
@@ -346,9 +442,19 @@ const CustomerIntroduceStack = () => {
           {active === 0 ? <Introduce /> : <HumanHash bottomSheetRef={bottomSheetRef} openSheet={openSheet} />}
         </ScrollView>
         <View className="px-4">
-          <TouchableOpacity onPress={() => navigation.goBack()} className="mt-5 bg-primary py-4 rounded-3xl">
-            <Text className="text-center text-white font-bold text-f16">Khai tác $ITLG của bạn</Text>
-          </TouchableOpacity>
+          {
+            active === 0 ? (
+              <TouchableOpacity onPress={() => navigation.goBack()} className="mt-5 bg-primary h-14 items-center justify-center rounded-3xl">
+                <Text className="text-center text-white font-sgbold text-f16">Khai tác $ITLG của bạn</Text>
+              </TouchableOpacity>
+            )
+            : (
+              <TouchableOpacity onPress={() => navigation.goBack()} className="mt-5 bg-primary h-14 items-center justify-center rounded-3xl">
+                <Text className="text-center text-white font-sgbold text-f16">Mời bạn bè của bạn</Text>
+              </TouchableOpacity>
+            )
+          }
+          
         </View>
       </View>
       <BottomSheetLearnMore
@@ -358,4 +464,4 @@ const CustomerIntroduceStack = () => {
     </View>
   );
 };
-export default CustomerIntroduceStack;
+export default CustomerIntroduceScreen;

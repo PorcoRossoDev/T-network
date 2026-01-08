@@ -16,7 +16,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 // forwardRef cho phép parent gọi ref.present()
 const BottomSheetLearnMore = forwardRef((props, ref) => {
-  const { snapPoints = ['90%'], onClose } = props;
+  const { snapPoints = ['70%'], onClose } = props;
 
   // render backdrop mờ
   const renderBackdrop = useCallback(
@@ -91,16 +91,15 @@ const BottomSheetLearnMore = forwardRef((props, ref) => {
     >
       <BottomSheetScrollView showsVerticalScrollIndicator={false} className="bg-white">
         <View className="px-4 pb-7">
-
           <View className="relative">
-            <TouchableOpacity onPress={onClose} className="absolute left-0 w-8 h-8 border border-gray-400 justify-center items-center rounded-full">
-              <MaterialIcons name="close" size={20} color="black" />
+            <TouchableOpacity onPress={onClose} className="absolute left-0 w-6 h-6 border border-gray-400 justify-center items-center rounded-full">
+              <MaterialIcons name="close" size={18} color="black" />
             </TouchableOpacity>
             <View className="flex-row justify-center items-center">
-                <View className="w-8 h-8 border bg-black justify-center items-center rounded-full">
-                  <FontAwesome6 name="book-open" size={15} color="white" />
+                <View className="w-6 h-6 border bg-black justify-center items-center rounded-full">
+                  <FontAwesome6 name="book-open" size={12} color="white" />
                 </View>
-                <Text className="ml-2 font-medium text-f16">Cơ chế Human Hash</Text>
+                <Text className="ml-2 font-sgbold text-f18">Cơ chế Human Hash</Text>
             </View>
           </View>
 
@@ -108,11 +107,11 @@ const BottomSheetLearnMore = forwardRef((props, ref) => {
           <View className="mt-8">
             <View className="flex-row items-center">
               <MaterialCommunityIcons name="sale" size={20} color="black" />
-              <Text className="ml-1 text-f15 font-medium">Tổng quan</Text>
+              <Text className="ml-1 text-f15 font-sgmedium">Tổng quan</Text>
             </View>
             <View>
               <View className="mt-3 bg-gray-200 p-4 rounded-xl">
-                <Text>
+                <Text className="font-sgregular">
                   Cơ chế này giải thích cách bạn có thể kiểm được sức mạnh Human Hash (HHP)
                   và phần thưởng $ITLG bằng cách mời bạn bè tham gia Interlink. Tìm hiểu quy tắc và xem cách tình phần
                   thưởng $ITLG hằng ngày của bạn!
@@ -127,7 +126,7 @@ const BottomSheetLearnMore = forwardRef((props, ref) => {
                   />
                 </View>
                 <View className="w-[94%]">
-                  <Text>
+                  <Text className="font-sgregular">
                     Cơ chế này giải thích cách bạn có thể kiểm được sức mạnh Human Hash (HHP)
                     và phần thưởng $ITLG bằng cách mời bạn bè tham gia Interlink. Tìm hiểu quy tắc và xem cách tình phần
                     thưởng $ITLG hằng ngày của bạn!
@@ -141,7 +140,7 @@ const BottomSheetLearnMore = forwardRef((props, ref) => {
           <View className="mt-5">
             <View className="flex-row items-center">
               <Ionicons name="calculator" size={20} color="black" />
-              <Text className="ml-1 text-f15 font-medium">Cách tính thường Human Hash cum</Text>
+              <Text className="ml-1 text-f15 font-sgmedium">Cách tính thường Human Hash cum</Text>
             </View>
             <View>
               {
@@ -155,7 +154,7 @@ const BottomSheetLearnMore = forwardRef((props, ref) => {
                         {
                           item.map((text, indexT) => {
                             return (
-                              <Text key={indexT}>{text}</Text>
+                              <Text className="font-sgregular" key={indexT}>{text}</Text>
                             )
                           })
                         }
@@ -171,7 +170,7 @@ const BottomSheetLearnMore = forwardRef((props, ref) => {
           <View className="mt-5">
             <View className="flex-row items-center">
               <FontAwesome name="file-text" size={20} color="black" />
-              <Text className="ml-1 text-f15 font-medium">Ví dụ minh hoạ</Text>
+              <Text className="ml-1 text-f15 font-sgmedium">Ví dụ minh hoạ</Text>
             </View>
             <View>
               <View className="mt-3 rounded-xl">
@@ -185,19 +184,19 @@ const BottomSheetLearnMore = forwardRef((props, ref) => {
                 >
                   <View className="py-5 px-5">
                     <View className="flex-row items-center justify-center">
-                      <View className="w-6 h-6 bg-black items-center justify-center rounded-full">
-                        <Fontisto name="star" size={12} color="white" />
+                      <View className="w-5 h-5 bg-black items-center justify-center rounded-full">
+                        <Fontisto name="star" size={10} color="white" />
                       </View>
-                      <Text className="ml-1 text-f15 font-medium">Cùng xem ví dụ cụ thể</Text>
+                      <Text className="ml-1.5 text-f15 font-sgmedium">Cùng xem ví dụ cụ thể</Text>
                     </View>
 
                     <View className="bg-white rounded-xl p-4 mt-4">
                       {
                         exampleList.map((item, index) => {
                           return (
-                            <View className="flex-row mb-2">
+                            <View key={index} className="flex-row mb-2">
                               <Text className="text-gray-500">•</Text>
-                              <Text key={index} className="pl-1 text-gray-500">{item}</Text>
+                              <Text key={index} className="pl-1 text-gray-500 font-sgregular">{item}</Text>
                             </View>
                           )
                         })

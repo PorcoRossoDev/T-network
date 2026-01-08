@@ -10,6 +10,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 import {
   Dimensions,
@@ -87,10 +88,10 @@ const Exploit = () => {
           </View>
         </View>
 
-        <Text className="mt-5 text-xl font-semibold text-gray-700">
+        <Text className="mt-5 text-xl font-sgbold text-gray-700">
           55M+ Engaged
         </Text>
-        <Text className="text-orange-300 text-lg">Pioneers</Text>
+        <Text className="text-orange-300 text-lg font-sgbold">Pioneers</Text>
       </View>
 
       <Aside />
@@ -135,7 +136,7 @@ const News = () => {
   return (
     <View>
       <View className="mx-4 mt-6 bg-white rounded-3xl p-5" style={styles.itemShadow}>
-        <Text className="text-lg font-semibold text-gray-700">
+        <Text className="text-lg font-sgbold text-gray-700">
           ⓟ Picore Team
         </Text>
 
@@ -152,7 +153,7 @@ const News = () => {
 
       <FlatList
       data={posts}
-      scrollToOverflowEnabled
+      scrollEnabled
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => (
         <View className="mx-4 mt-4 bg-white rounded-2xl p-4" style={styles.itemShadow}>
@@ -161,7 +162,7 @@ const News = () => {
               <View className="w-6 h-6 bg-indigo-300 rounded-full items-center justify-center mr-2">
                 <Text className="text-white text-xs font-bold">π</Text>
               </View>
-              <Text className="font-semibold text-gray-700">Admin</Text>
+              <Text className="font-sgmedium text-gray-700">Admin</Text>
             </View>
 
             <View className="flex-row items-center">
@@ -178,7 +179,7 @@ const News = () => {
             resizeMode="cover"
           />
 
-          <Text className="mt-3 font-semibold text-gray-700">
+          <Text className="mt-3 font-sgmedium text-gray-700">
             {item.title}
           </Text>
 
@@ -294,10 +295,10 @@ const NewI = () => {
               </View>
             </View>
 
-            <Text className="mt-4 text-xl font-bold text-gray-900">
+            <Text className="mt-4 text-xl font-sgbold text-gray-900">
               55M+ Engaged
             </Text>
-            <Text className="text-orange-500 font-semibold text-lg">
+            <Text className="text-orange-500 font-sgbold text-lg">
               Pioneers
             </Text>
           </View>
@@ -328,24 +329,28 @@ const NewI = () => {
           <View className="bg-[#f9f7fb] rounded-2xl border border-gray-200">
             {/* Picore Team Card */}
             <View className="bg-gray-50 rounded-3xl p-4">
-              <Text className="text-lg font-bold text-gray-900">
+              <Text className="text-lg font-sgbold text-gray-900">
                 ⓟ Picore Team
               </Text>
 
-              <Text className="text-gray-600 mt-2 leading-5">
+              <Text className="text-gray-600 mt-2 leading-5 font-sgregular">
                 Follow our official media channels to keep up with the latest
                 Pi Network updates and content! Beware of impersonators.
               </Text>
 
               <View className="flex-row mt-4">
                 <TouchableOpacity className="flex-row items-center bg-white px-4 py-2 rounded-full mr-3">
-                  <Text className="mr-1">🐦</Text>
-                  <Text className="font-medium">Twitter</Text>
+                  <View className="mr-1">
+                    <AntDesign name="x" size={13} color="black" />
+                  </View>
+                  <Text className="font-sgmedium">Twitter</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity className="flex-row items-center bg-white px-4 py-2 rounded-full">
-                  <Text className="mr-1">✈️</Text>
-                  <Text className="font-medium">Telegram</Text>
+                  <View className="mr-1">
+                    <FontAwesome6 name="telegram" size={19} color="black" />
+                  </View>
+                  <Text className="font-sgmedium">Telegram</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -353,21 +358,21 @@ const NewI = () => {
             {/* Post Card */}
             <FlatList
               data={posts}
-              scrollEnabled
+              scrollEnabled={false}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
                 <View className="mx-4 mt-4 bg-white px-4 border border-gray-200 rounded-xl shadow-sm overflow-hidden">
                   <View className="flex-row items-center justify-between py-3">
                     <View className="flex-row items-center">
                       <View className="w-5 h-5 bg-[#7b77cd] rounded-full items-center justify-center mr-2">
-                        <Text className="text-white text-xs font-bold">π</Text>
+                        <Text className="text-white text-xs font-sgbold">π</Text>
                       </View>
-                      <Text className="font-semibold text-gray-900">Admin</Text>
+                      <Text className="font-sgmedium text-gray-900">Admin</Text>
                     </View>
 
                     <View className="flex-row">
                       <Ionicons name="calendar-clear-outline" size={14} className="" color="#9ca3af" />
-                      <Text className="text-xs ml-1 text-gray-400">
+                      <Text className="text-xs ml-1 text-gray-400 font-sgregular">
                         12 tháng 8, 2025
                       </Text>
                     </View>
@@ -382,10 +387,10 @@ const NewI = () => {
 
                   {/* Content */}
                   <View className="py-3 mb-2">
-                    <Text className="text-gray-900 font-semibold text-base">
+                    <Text className="text-gray-900 font-sgmedium text-base">
                       {item.title}
                     </Text>
-                    <Text className="text-gray-500 leading-5">
+                    <Text className="text-gray-500 leading-5 font-sgregular">
                       {item.excerpt}
                     </Text>
                   </View>
@@ -415,8 +420,8 @@ const StatsHeader = () => {
 const StatItem = ({ value, label }) => {
   return (
     <View className="items-center flex-1">
-      <Text className="text-lg font-semibold text-gray-700">{value}</Text>
-      <Text className="text-gray-400 text-sm">{label}</Text>
+      <Text className="text-lg font-sgmedium text-gray-700">{value}</Text>
+      <Text className="text-gray-400 text-sm font-sgregular">{label}</Text>
     </View>
   );
 }
@@ -432,7 +437,7 @@ const HomeScreen = () => {
   const BannerConnect = require("../../assets/image-app/nexkG-white.png");
 
   return (
-    <View className="flex-1 bg-gray-10 relative">
+    <View className="flex-1 bg-gray-100 relative">
       <HeaderBar />
       <ScrollView className="relative z-50 mt-3 bg-white pt-4 rounded-t-3xl">
         <View className="pb-10">

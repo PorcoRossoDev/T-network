@@ -18,9 +18,9 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   // Tải fonts từ assets
   const [fontsLoaded] = useFonts({
-    sfregular: require('./assets/fonts/SF-Pro-Display/SF-Pro-Display-Regular.otf'),
-    sfmedium: require('./assets/fonts/SF-Pro-Display/SF-Pro-Display-Medium.otf'),
-    sfbold: require('./assets/fonts/SF-Pro-Display/SF-Pro-Display-Bold.otf'),
+    sgregular: require('./assets/fonts/Font-Gilroy/SVN-Gilroy Regular.otf'),
+    sgmedium: require('./assets/fonts/Font-Gilroy/SVN-Gilroy Medium.otf'),
+    sgbold: require('./assets/fonts/Font-Gilroy/SVN-Gilroy Bold.otf'),
   });
 
   // State theo dõi trạng thái khởi tạo

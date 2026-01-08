@@ -42,8 +42,8 @@ const BottomSheetForgotID = forwardRef((props, ref) => {
           <View className="bg-white">
     
             <View className="px-4">
-              <Text className="text-xl font-bold">Chọn một phương thức</Text>
-              <Text className="text-gray-500 mt-1 text-f15">Chọn một phương thức để lấy lại ID của bạn</Text>
+              <Text className="text-xl font-sgbold">Chọn một phương thức</Text>
+              <Text className="text-gray-500 mt-1 text-f15 font-sgregular">Chọn một phương thức để lấy lại ID của bạn</Text>
             </View>
     
             <View className="px-4 mt-5 relative">
@@ -51,14 +51,14 @@ const BottomSheetForgotID = forwardRef((props, ref) => {
                 <View className="bg-white w-11 h-11 justify-center items-center rounded-xl mr-4">
                   <MaterialIcons name="email" size={24} color="#eab308" />
                 </View>
-                <Text>Xác minh qua Email</Text>
+                <Text className="font-sgregular">Xác minh qua Email</Text>
               </View>
 
               <View className="bg-gray-100 py-3 px-3 rounded-xl flex-row items-center">
                 <View className="bg-white w-11 h-11 justify-center items-center rounded-xl mr-4">
                   <FontAwesome name="google" size={24} color="red" />
                 </View>
-                <Text>Xác minh qua Gmail</Text>
+                <Text className="font-sgregular">Xác minh qua Gmail</Text>
               </View>
 
             </View>

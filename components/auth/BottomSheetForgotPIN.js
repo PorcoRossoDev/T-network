@@ -41,8 +41,8 @@ const BottomSheetForgotPIN = forwardRef((props, ref) => {
           <View className="bg-white mt-10">
     
             <View className="px-4">
-              <Text className="text-center text-3xl font-medium mt-8">Đăng nhập</Text>
-              <Text className="text-center text-gray-500 mt-3 text-f15">Đăng nhập bằng khuôn mặt của bạn - Chìa khoá chính là mật khẩu của bạn. Chỉ cần quét và bắt đầu.</Text>
+              <Text className="text-center text-2xl font-sgbold mt-8">Đăng nhập</Text>
+              <Text className="text-center text-gray-500 mt-3 text-f15 font-sgregular leading-5">Đăng nhập bằng khuôn mặt của bạn - Chìa khoá chính là mật khẩu của bạn. Chỉ cần quét và bắt đầu.</Text>
             </View>
     
             <View className="px-4 mt-8 relative">
@@ -52,13 +52,13 @@ const BottomSheetForgotPIN = forwardRef((props, ref) => {
                 </View>
                 <View className="w-[1px] h-[55%] bg-gray-300 mx-2"></View>
                 <View className="">
-                  <Text className="text-gray-400">Nhập ID của Bạn</Text>
+                  <Text className="text-gray-400 font-sgregular mb-1">Nhập ID của Bạn</Text>
                   <TextInput
-                    value={''}
+                    value={'binh@'}
                     onChangeText={''}
                     onFocus={() => handleFocus("username")}
                     onBlur={() => handleBlur("username")}
-                    className=""
+                    className="font-sgregular"
                     placeholder=""
                     placeholderTextColor="#9ca3af"
                       />
@@ -68,7 +68,7 @@ const BottomSheetForgotPIN = forwardRef((props, ref) => {
                   </TouchableOpacity>
               </View>
               <TouchableOpacity className="mt-4">
-                  <Text className="text-center font-bold text-blue-600">Quên ID đăng nhập?</Text>
+                  <Text className="text-center font-sgbold text-blue-600">Quên ID đăng nhập?</Text>
               </TouchableOpacity>
             </View>
           </View>
