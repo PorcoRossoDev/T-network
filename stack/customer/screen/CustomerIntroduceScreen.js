@@ -249,7 +249,7 @@ const HumanHash = ({bottomSheetRef, openSheet}) => {
               <Text className="text-f12 font-sgregular">+0.5HHP</Text>
             </View>
           </View>
-          <Text className="mt-2 font-sgregular">Nhập mã giới thiệu để nhận 0.5 thêm mã Husman Hash</Text>
+          <Text className="mt-3 font-sgregular">Nhập mã giới thiệu để nhận 0.5 thêm mã Husman Hash</Text>
         </View>
       </View>
 
@@ -302,6 +302,17 @@ const HisToryTabDirect = () => {
   )
 }
 
+const getDisplayLabel = (value) => {
+  const item = items.find(i => i.value === value);
+  if (!item) return 'Mới nhất';
+
+  if (item.label.length > 4) {
+    return item.label.slice(0, 4) + '..';
+  }
+  return item.label;
+};
+
+
 // Tab gián tiếp
 const HisToryTabInDirect = ({data}) => {
   const [open, setOpen] = useState(false);
@@ -325,9 +336,9 @@ const HisToryTabInDirect = ({data}) => {
       ) : (
         // Nếu có dữ liệu, render gì đó ở đây
         <View className="p-2 mt-4">
-          <View className="flex-row justify-between">
+          <View className="flex-row justify-between items-center">
             <Text className="text-f15 font-sgmedium">Giới thiệu gián tiếp (20)</Text>
-            <View style={{ width: '30%' }}>
+            <View style={{ width: 100 }}>
               <DropDownPicker
                 open={open}
                 value={value}
@@ -336,20 +347,43 @@ const HisToryTabInDirect = ({data}) => {
                 setValue={setValue}
                 setItems={setItems}
                 placeholder="Mới nhất"
-                // style={{
-                //   height: 48,
-                // }}
-                textStyle={{
-                  fontSize: 14,
-                  lineHeight: 18,
-                  flexShrink: 1,
+                showArrowIcon={false}
+                listMode="SCROLLVIEW"
+                style={{
+                  borderWidth: 1,
+                  borderColor: '#ddd',
+                  borderRadius: 8,
+                  minHeight: 40,
                 }}
-                placeholderStyle={{
-                  color: '#999',
+                dropDownContainerStyle={{
+                  borderWidth: 1,
+                  borderColor: '#ddd',
+                  borderRadius: 8,
                 }}
-                numberOfLines={1}
-                ellipsizeMode="tail"
+                renderCustomizedButtonChild={() => (
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      width: '100%', // 🔥 bắt buộc
+                    }}
+                  >
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                      style={{
+                        flex: 1, // 🔥 quan trọng nhất
+                        fontSize: 14,
+                        lineHeight: 18,
+                      }}
+                    >
+                      {getDisplayLabel(value)}
+                    </Text>
+                  </View>
+                )}
               />
+
+
             </View>
           </View>
           <View className="mt-4">

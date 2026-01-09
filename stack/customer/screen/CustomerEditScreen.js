@@ -1,21 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
-import Carousel from 'react-native-reanimated-carousel';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Platform, StyleSheet, Text, View, Image, useWindowDimensions, FlatList, TextInput } from "react-native";
-import { Dropdown } from 'react-native-element-dropdown';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Feather from '@expo/vector-icons/Feather';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import Fontisto from '@expo/vector-icons/Fontisto';
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import BottomSheetLearnMore from '../../../components/auth/BottomSheetLearnMore'
-import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { BlurView } from 'expo-blur';
-import { HeavyFakeBlurText } from "../../../components/common/HeavyFakeBlurText";
 
 import {
   Dimensions,
@@ -62,26 +49,28 @@ const CustomerEditScreen = () => {
           </View>
 
           <View className="px-4 mt-8 relative">
-            <View className="border border-primary rounded-2xl h-[70px] px-3 flex-row items-center">
-              <View className="">
+            <View className="border border-primary rounded-2xl h-[70px] overflow-hidden flex-row items-center">
+              <View className="w-7 ml-3">
                 <MaterialIcons name="perm-contact-cal" size={24} color="#9ca3af" />
               </View>
-              <View className="w-[1px] h-[55%] bg-gray-300 mx-2"></View>
-              <View className="">
-                <Text className="text-gray-400 font-sgregular mb-1">Nhập tên người dùng</Text>
-                <TextInput
-                  value={'binh@'}
-                  onChangeText={''}
-                  onFocus={() => handleFocus("username")}
-                  onBlur={() => handleBlur("username")}
-                  className="font-sgregular"
-                  placeholder=""
-                  placeholderTextColor="#9ca3af"
-                    />
+              <View className="flex-row relative w-[60%]">
+                <View className="w-[1px] bg-gray-300 mx-2 absolute h-[55%] top-1/2 -translate-y-5"></View>
+                <View className="flex-1 pl-5">
+                  <Text className={`text-gray-400 font-sgregular ${Platform.OS=='ios'?'mb-1.5':'relative top-1.5'}`}>Nhập tên người dùng</Text>
+                  <TextInput
+                    value={'binh@'}
+                    onChangeText={''}
+                    onFocus={() => handleFocus("username")}
+                    onBlur={() => handleBlur("username")}
+                    className="font-sgregular text-f16"
+                    placeholder=""
+                    placeholderTextColor="#9ca3af"
+                      />
+                </View>
               </View>
-              <TouchableOpacity onPress={''} className="w-5 h-5 justify-center items-center bg-gray-300 rounded-full absolute right-3">
-                  <MaterialIcons name="clear" size={15} color="#9ca3af" />
-                </TouchableOpacity>
+              <View className="bg-gray-100 h-full flex-1 justify-center items-center">
+                <Text className="font-sgregular borer-l border-gray-300">@9847627830</Text>
+              </View>
             </View>
           </View>
         </View>

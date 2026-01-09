@@ -10,6 +10,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import BottomSheetVerify from "../../../components/customer/BottomSheetVerify";
 
 
 import {
@@ -57,6 +58,15 @@ const HeaderBar = () => {
 }
 
 const Avatar = () => {
+  /*=== START: Modal - Lấy mã pin ===*/
+  const bottomSheetRef = useRef(null);
+  const openSheet = useCallback(() => {
+    bottomSheetRef.current?.present();
+  }, []);
+  const closeSheet = useCallback(() => {
+    bottomSheetRef.current?.dismiss();
+  }, []);
+
   const navigation = useNavigation();
   const ImageFaceID = require("../../../assets/image-app/image-faceid.png");
   return (
@@ -81,7 +91,7 @@ const Avatar = () => {
 
       <View className="px-4 flex-row flex-wrap -mx-2 mt-6">
         <View className="w-1/2 px-2">
-          <TouchableOpacity className="bg-gray-100 rounded-xl p-4 min-h-[140px] justify-end">
+          <TouchableOpacity onPress={openSheet} className="bg-gray-100 rounded-xl p-4 min-h-[140px] justify-end">
             <View className="justify-center items-center w-24 h-24 bg-white rounded-full absolute -top-4 -right-4">
               <Image source={ImageFaceID} className="w-8 h-8 mb-2 relative top-2 right-1" resizeMode="contain" />
             </View>
@@ -103,6 +113,11 @@ const Avatar = () => {
           </TouchableOpacity>
         </View>
       </View>
+
+      <BottomSheetVerify
+        ref={bottomSheetRef}
+        onClose={closeSheet}
+      />
     </View>
   )
 }
@@ -186,9 +201,10 @@ const CustomerOverviewScreen = () => {
   const { width } = Dimensions.get("window");
   const sideSpacing = 16;
   const navigation = useNavigation();
+
   const customerNavigation = [
-    { id: '1', title: 'Hồ sơ cá nhân', icon: 'account-circle-outline', screen: 'CustomerProfile', name: 'Customer' },
-    { id: '2', title: 'Cài đặt thông báo', icon: 'bell-outline', screen: 'CustomerNotifications', name: 'Customer' },
+    { id: '1', title: 'Hồ sơ cá nhân', icon: 'account-circle-outline', screen: 'CustomerInfo', name: 'Customer' },
+    { id: '2', title: 'Quản lý tài khoản', icon: 'bell-outline', screen: 'CustomerManage', name: 'Customer' },
     { id: '3', title: 'Đăng nhập Admin', icon: 'account-circle-outline', screen: 'Login', name: 'User' },
   ]
 

@@ -2,7 +2,6 @@ import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TouchableOpacity } from "react-native";
 import * as HeroOutline from "react-native-heroicons/outline";
-import HeaderUser from "../../components/user/HeaderUser";
 import {
   ForgotScreen,
   LoginScreen

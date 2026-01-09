@@ -359,7 +359,7 @@ const CustomerPinScreen = () => {
               renderCell={({ index, symbol, isFocused }) => (
                 <Text
                   key={index}
-                  className={`bg-gray-200 w-[55px] h-[65px] leading-[65px] rounded-xl text-center text-f18 font-sgregular overflow-hidden ${isFocused ? 'border-primary border' : 'border-transparent'}`}
+                  className={`w-[55px] h-[65px] leading-[65px] rounded-xl text-center text-f18 font-sgregular overflow-hidden ${isFocused ? 'border-primary border bg-white' : 'border-transparent bg-gray-200'}`}
                   onLayout={getCellOnLayoutHandler(index)}
                 >
                   {symbol ? '•' : isFocused ? <Cursor /> : null}

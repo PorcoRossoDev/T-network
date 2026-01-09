@@ -4,7 +4,7 @@ import {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import { forwardRef, useCallback } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, TextInput, Platform } from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Fontisto from '@expo/vector-icons/Fontisto';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -38,7 +38,7 @@ const BottomSheetForgotPIN = forwardRef((props, ref) => {
     >
       <BottomSheetView className='py-3'>
         <View className=''>
-          <View className="bg-white mt-10">
+          <View className="bg-white mt-5">
     
             <View className="px-4">
               <Text className="text-center text-2xl font-sgbold mt-8">Đăng nhập</Text>
@@ -52,13 +52,13 @@ const BottomSheetForgotPIN = forwardRef((props, ref) => {
                 </View>
                 <View className="w-[1px] h-[55%] bg-gray-300 mx-2"></View>
                 <View className="">
-                  <Text className="text-gray-400 font-sgregular mb-1">Nhập ID của Bạn</Text>
+                  <Text className={`text-gray-400 font-sgregular ${Platform.OS=='ios'?'mb-1.5':'relative top-1.5'}`}>Nhập ID của Bạn</Text>
                   <TextInput
                     value={'binh@'}
                     onChangeText={''}
                     onFocus={() => handleFocus("username")}
                     onBlur={() => handleBlur("username")}
-                    className="font-sgregular"
+                    className="font-sgregular text-f16"
                     placeholder=""
                     placeholderTextColor="#9ca3af"
                       />

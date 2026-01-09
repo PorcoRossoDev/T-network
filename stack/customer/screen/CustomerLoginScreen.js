@@ -322,7 +322,7 @@ const CustomerLoginScreen = () => {
             </View>
             <View className="w-[1px] h-[55%] bg-gray-300 mx-2"></View>
             <View className="">
-              <Text className="text-gray-400 font-sgregular mb-1">Nhập ID của Bạn</Text>
+              <Text className={`text-gray-400 font-sgregular ${Platform.OS=='ios'?'mb-1.5':'relative top-1.5'}`}>Nhập ID của Bạn</Text>
               <TextInput
                 value={username}
                 onChangeText={setUsername}
@@ -331,7 +331,7 @@ const CustomerLoginScreen = () => {
                 className="font-sgregular text-f15"
                 placeholder=""
                 placeholderTextColor="#9ca3af"
-                  />
+                />
             </View>
             {
               username.length > 0 && (
